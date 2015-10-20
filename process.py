@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import csv
+import datetime
 import json
 import os
 import sys
@@ -29,8 +30,15 @@ def process(dataPath, outputDir):
     with open(os.path.join(outputDir, csvFileName), 'w') as outfile:
       writer = csv.writer(outfile)
 
+      writer.writerow(['timestamp', 'messages'])
+      writer.writerow(['datetime', 'int'])
+      writer.writerow(['T', ''])
+
       for event in events:
-        writer.writerow([event['timestamp'], 1])
+        timestampString = str(event['timestamp'])[:10]
+        timestampRaw = datetime.datetime.fromtimestamp(int(timestampString))
+        timestamp = timestampRaw.strftime('%Y-%m-%d %H:%M:%S.0')
+        writer.writerow([timestamp, 1])
 
 
 
