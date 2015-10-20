@@ -11,3 +11,7 @@ An example of using NuPIC to detect anomalies in Google Hangouts conversations.
 2. Process your data.
 
    Run `process.py PATH/TO/Hangouts.json PATH/TO/OUTPUT_DIRECTORY`.
+
+3. Run your data through NuPIC.
+
+   TODO
