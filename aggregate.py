@@ -1,16 +1,17 @@
 #!/usr/bin/python
+import argparse
 import csv
-import sys
 
 from nupic.data.file_record_stream import FileRecordStream
 from nupic.data.aggregator import Aggregator
 
 
 
-def aggregate(dataPath, outputPath):
+def aggregate(dataPath, outputPath, days=0, hours=0):
   with FileRecordStream(dataPath) as reader:
     aggregator = Aggregator({'fields': [('messages', 'sum')],
-                             'days': 1},
+                             'days': days,
+                             'hours': hours},
                             reader.getFields())
 
     with open(outputPath, 'w') as outfile:
@@ -37,4 +38,12 @@ def aggregate(dataPath, outputPath):
 
 
 if __name__ == "__main__":
-  aggregate(sys.argv[1], sys.argv[2])
+  parser = argparse.ArgumentParser()
+  parser.add_argument('data', metavar='/path/to/data.csv', type=str)
+  parser.add_argument('output', metavar='/path/to/output.csv', type=str)
+  parser.add_argument('-D', '--days', type=int, default=0)
+  parser.add_argument('-H', '--hours', type=int, default=0)
+
+  args = parser.parse_args()
+
+  aggregate(args.data, args.output, days=args.days, hours=args.hours)
