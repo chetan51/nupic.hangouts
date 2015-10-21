@@ -19,7 +19,7 @@ def convert(dataPath, outputPath):
       for row in reader:
         timestamp = datetime.strptime(row[0], '%Y-%m-%d %H:%M:%S.0')
         timestamp = int(time.mktime(timestamp.timetuple()))
-        outfile.write(json.dumps([timestamp, 1]))
+        outfile.write(json.dumps([timestamp, int(row[1])]))
         outfile.write("\n")
 
 
