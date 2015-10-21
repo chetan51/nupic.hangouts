@@ -20,6 +20,7 @@ def process(dataPath, outputDir):
     events = conversation['event']
 
     events = [event for event in events if event['event_type'] == 'REGULAR_CHAT_MESSAGE']
+    events = sorted(events, key=lambda event: event['timestamp'])
 
     textFileName = "{0}_{1}.txt".format(conversationId, len(events))
     csvFileName = "{0}_{1}.csv".format(conversationId, len(events))
