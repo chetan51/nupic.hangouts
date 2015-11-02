@@ -18,6 +18,6 @@ An example of using NuPIC to detect anomalies in Google Hangouts conversations.
 
 4. Run a conversation through a NuPIC model and plot results.
 
-    Pick a conversation in the `data` directory (one of the `.csv` files).
+    Pick a conversation in the `data` directory (one of the `.csv` files). The number in the name of the `.csv` file indicates how many total messages are in the conversation.
 
     >  ./model.py PATH/TO/CONVERSATION.csv output
