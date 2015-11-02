@@ -25,5 +25,4 @@ An example of using NuPIC to detect anomalies in Google Hangouts conversations.
 ## Example output
 
 ![Example Output](https://raw.githubusercontent.com/chetan51/nupic.hangouts/master/images/example.png)
-
-__The red triangles are points of high anomaly.__
+_The red triangles are points of high anomaly._
