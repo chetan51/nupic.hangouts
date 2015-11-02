@@ -41,16 +41,16 @@ def plot(dataPath, resultsPath):
 
       pyplot.subplot(2, 1, 1)
       pyplot.title("Messages")
-      pyplot.plot(timestamps, messages)
-
-      pyplot.subplot(2, 1, 1)
-      pyplot.title("Messages")
       pyplot.xlim(min(timestamps), max(timestamps))
-      sizes = [40 for t in timestampsScatter]
-      pyplot.scatter(timestampsScatter, messagesScatter, s=sizes)
+      pyplot.ylim(0, max(messages)+10)
+      sizes = [80 for t in timestampsScatter]
+      y = [0 for t in timestampsScatter]
+      pyplot.plot(timestamps, messages, zorder=1)
+      pyplot.scatter(timestampsScatter, y, zorder=2, s=sizes, c="red", marker='d')
 
       pyplot.subplot(2, 1, 2)
       pyplot.title("Anomaly Score")
+      pyplot.ylim(0, 1)
       pyplot.plot(timestamps, anomalyScores)
 
       pyplot.show()
