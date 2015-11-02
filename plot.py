@@ -15,11 +15,6 @@ def plot(dataPath, resultsPath):
       messages = []
       anomalyScores = []
 
-      # TODO: refactor this
-      timestampsScatter = []
-      messagesScatter = []
-      anomalyScoresScatter = []
-
       while True:
         dataRow = dataFile.readline()
         resultRow = resultsFile.readline()
@@ -34,19 +29,17 @@ def plot(dataPath, resultsPath):
         messages.append(data[1])
         anomalyScores.append(result[1])
 
-        if result[1] > 0.5:
-          timestampsScatter.append(datetime.fromtimestamp(data[0]))
-          messagesScatter.append(data[1])
-          anomalyScoresScatter.append(result[1])
-
       pyplot.subplot(2, 1, 1)
       pyplot.title("Messages")
+
       pyplot.xlim(min(timestamps), max(timestamps))
       pyplot.ylim(0, max(messages)+10)
-      sizes = [80 for t in timestampsScatter]
-      y = [0 for t in timestampsScatter]
+
       pyplot.plot(timestamps, messages, zorder=1)
-      pyplot.scatter(timestampsScatter, y, zorder=2, s=sizes, c="red", marker='d')
+
+      x = [t for t, a in zip(timestamps, anomalyScores) if a > 0.5]
+      y = [0 for i in x]
+      pyplot.scatter(x, y, zorder=2, s=80, c="red", marker='d')
 
       pyplot.subplot(2, 1, 2)
       pyplot.title("Anomaly Score")
