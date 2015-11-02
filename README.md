@@ -3,15 +3,21 @@ An example of using NuPIC to detect anomalies in Google Hangouts conversations.
 
 ## Usage
 
-1. Get your data.
+1. Install.
+
+    Run `python setup.py install --user`
+
+2. Get your data.
 
     Visit [Google Takeout](https://www.google.com/settings/takeout), select only the "Hangouts" option, and download.
     Extract the `Hangouts.json` file from the downloaded data.
 
-2. Process your data.
+3. Process your data.
 
-   Run `process.py PATH/TO/Hangouts.json PATH/TO/OUTPUT_DIRECTORY`.
+       python -m nupic_hangouts.scripts.process PATH/TO/Hangouts.json data
 
-3. Run your data through NuPIC.
+4. Run a conversation through a NuPIC model and plot results.
 
-   TODO
+   Pick a conversation in the `data` directory (one of the `.csv` files).
+
+       ./model.py PATH/TO/CONVERSATION.csv output

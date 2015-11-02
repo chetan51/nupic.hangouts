@@ -11,6 +11,9 @@ def process(dataPath, outputDir):
   maxNumEvents = 0
   maxConversation = None
 
+  if not os.path.exists(outputDir):
+    os.makedirs(outputDir)
+
   with open(dataPath, 'r') as infile:
     data = json.load(infile)
 
