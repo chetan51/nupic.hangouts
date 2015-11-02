@@ -5,7 +5,7 @@ An example of using NuPIC to detect anomalies in Google Hangouts conversations.
 
 1. Install.
 
-    Run `python setup.py install --user`
+> python setup.py install --user
 
 2. Get your data.
 
@@ -14,10 +14,10 @@ An example of using NuPIC to detect anomalies in Google Hangouts conversations.
 
 3. Process your data.
 
-       python -m nupic_hangouts.scripts.process PATH/TO/Hangouts.json data
+> python -m nupic_hangouts.scripts.process PATH/TO/Hangouts.json data
 
 4. Run a conversation through a NuPIC model and plot results.
 
    Pick a conversation in the `data` directory (one of the `.csv` files).
 
-       ./model.py PATH/TO/CONVERSATION.csv output
+>  ./model.py PATH/TO/CONVERSATION.csv output
