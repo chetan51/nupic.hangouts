@@ -21,3 +21,9 @@ An example of using NuPIC to detect anomalies in Google Hangouts conversations.
     Pick a conversation in the `data` directory (one of the `.csv` files). The number in the name of the `.csv` file indicates how many total messages are in the conversation.
 
     >  ./model.py PATH/TO/CONVERSATION.csv output
+
+## Example output
+
+![Example Output](https://raw.githubusercontent.com/chetan51/nupic.hangouts/master/images/example.png)
+
+__The red triangles are points of high anomaly.__
