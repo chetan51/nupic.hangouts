@@ -1,10 +1,12 @@
 #!/usr/bin/python
 import argparse
+import json
 import os
 
 from nupic_hangouts.scripts.aggregate import aggregate
 from nupic_hangouts.scripts.fill_zeros import fillZeros
 from nupic_hangouts.scripts.convert_unicorn import convert
+from nupic_hangouts.scripts.compute_params import computeParams
 from nupic_hangouts.scripts.plot import plot
 
 
@@ -26,6 +28,8 @@ def model(dataPath, outputDir):
   convertedPath = os.path.join(outputDir, base + "_filled.json")
   convert(filledPath, convertedPath)
 
+  params = computeParams(convertedPath)
+
   print "Running model..."
 
   resultsPath = os.path.join(outputDir, base + "_results.json")
@@ -33,8 +37,8 @@ def model(dataPath, outputDir):
     os.remove(resultsPath)
   command = ("cat {0} | python -m unicorn_backend.model_runner"
              " --model hangouts"
-             " --stats '{{\"min\": 0, \"max\": 270}}' > {1}").format(
-               convertedPath, resultsPath)
+             " --stats '{1}' > {2}").format(
+               convertedPath, json.dumps(params), resultsPath)
   os.system(command)
 
   print "Plotting results..."
